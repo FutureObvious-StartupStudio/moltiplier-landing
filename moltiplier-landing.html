@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moltiplier.ai — OpenClaw for Business</title>
-  <meta name="description" content="The world's hottest AI agent, deployed and managed for your business. Unified visibility. Audit logging. Organizational control layer.">
+  <title>Moltiplier.ai — It's Dead, Jim</title>
+  <meta name="description" content="Moltiplier.ai (2026–2026) has gone to the great pitch deck in the sky. The good parts live on at getForceMultiplier.ai and futureobvious.com.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -25,18 +25,18 @@
       --danger-bg: rgba(220, 53, 69, 0.08);
       --danger-border: rgba(220, 53, 69, 0.2);
       --border: rgba(255,255,255,0.06);
+      --stone: #1a1f2b;
+      --stone-edge: #2a3140;
       --font-display: 'Syne', sans-serif;
       --font-body: 'Outfit', sans-serif;
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-body);
       background: var(--bg-deep);
       color: var(--text-secondary);
       line-height: 1.7;
-      font-weight: 400;
+      min-height: 100vh;
       overflow-x: hidden;
     }
 
@@ -52,21 +52,14 @@
     }
 
     .container {
-      max-width: 1080px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 18px 0;
-      background: rgba(4, 6, 11, 0.85);
-      backdrop-filter: blur(16px);
+      padding: 22px 0;
       border-bottom: 1px solid var(--border);
     }
     nav .container {
@@ -78,33 +71,42 @@
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 1.25rem;
-      color: var(--text-primary);
-      text-decoration: none;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      text-decoration-color: var(--danger);
+      text-decoration-thickness: 3px;
       letter-spacing: -0.02em;
     }
-    .logo span { color: var(--accent); }
-    .nav-cta {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
+    .logo span { color: var(--accent-dim); }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
       font-weight: 500;
-      color: var(--bg-deep);
-      background: var(--accent);
-      padding: 10px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.2s;
+      color: var(--danger);
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      padding: 6px 14px;
+      border-radius: 100px;
     }
-    .nav-cta:hover { background: #f5b52a; transform: translateY(-1px); }
+    .status-pill .dot {
+      width: 6px; height: 6px;
+      background: var(--danger);
+      border-radius: 50%;
+      animation: flatline 2.4s steps(1) infinite;
+    }
 
     /* ── HERO ── */
     .hero {
-      padding: 160px 0 100px;
+      padding: 80px 0 48px;
+      text-align: center;
       position: relative;
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: 60px;
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 700px;
@@ -112,139 +114,122 @@
       background: radial-gradient(ellipse at center, rgba(232, 165, 23, 0.06) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 500;
+    .hero > * { position: relative; }
+
+    /* Tombstone */
+    .tombstone {
+      width: 260px;
+      margin: 0 auto 36px;
+      background: linear-gradient(180deg, var(--stone-edge) 0%, var(--stone) 60%, #121620 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 130px 130px 14px 14px;
+      padding: 48px 24px 32px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+      animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both;
+      position: relative;
+    }
+    .tombstone::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -14px;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 18px;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.6), transparent 70%);
+      z-index: -1;
+    }
+    .tombstone .rip {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2.6rem;
+      color: var(--text-primary);
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .tombstone .name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
       color: var(--accent);
-      background: var(--accent-glow);
-      border: 1px solid rgba(232, 165, 23, 0.2);
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-      animation: fadeDown 0.6s ease both;
+      margin-bottom: 4px;
     }
-    .hero-badge .dot {
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
+    .tombstone .dates {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
     }
+    .tombstone .epitaph {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .grass {
+      height: 3px;
+      width: 420px;
+      max-width: 90%;
+      margin: -36px auto 48px;
+      background: linear-gradient(90deg, transparent, var(--stone-edge), transparent);
+    }
+
     .hero h1 {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
       color: var(--text-primary);
       line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      animation: fadeDown 0.6s 0.1s ease both;
+      margin-bottom: 18px;
+      animation: fadeDown 0.6s 0.2s ease both;
     }
     .hero h1 em {
       font-style: normal;
       color: var(--accent);
     }
     .hero .subtitle {
-      font-size: 1.15rem;
-      max-width: 620px;
-      margin-bottom: 44px;
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 36px;
       line-height: 1.8;
-      animation: fadeDown 0.6s 0.2s ease both;
+      animation: fadeDown 0.6s 0.3s ease both;
     }
     .hero .subtitle strong { color: var(--text-primary); font-weight: 500; }
 
-    /* ── FORM ── */
-    .cta-block {
-      animation: fadeDown 0.6s 0.3s ease both;
+    /* ── CAUSE OF DEATH ── */
+    .coroner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px 28px;
+      text-align: left;
+      max-width: 560px;
+      margin: 0 auto 56px;
+      animation: fadeDown 0.6s 0.4s ease both;
     }
-    .email-form {
-      display: flex;
-      gap: 10px;
-      max-width: 520px;
+    .coroner .label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--danger);
       margin-bottom: 14px;
     }
-    .email-form input {
-      flex: 1;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      padding: 14px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      outline: none;
-      transition: border-color 0.2s;
+    .coroner dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 8px 20px;
+      font-size: 0.92rem;
     }
-    .email-form input::placeholder { color: var(--text-muted); }
-    .email-form input:focus { border-color: rgba(232, 165, 23, 0.4); }
-    .email-form button {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--bg-deep);
-      background: var(--accent);
-      padding: 14px 28px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-    .email-form button:hover { background: #f5b52a; transform: translateY(-1px); }
-    .deposit-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      color: var(--accent-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .deposit-link:hover { color: var(--accent); }
-    .deposit-link svg { width: 14px; height: 14px; }
+    .coroner dt { color: var(--text-muted); }
+    .coroner dd { color: var(--text-primary); }
 
-    .form-success {
-      display: none;
-      padding: 16px 20px;
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-      border-radius: 10px;
-      color: #4ade80;
-      font-size: 0.9rem;
-      max-width: 520px;
-    }
-
-    /* ── SOCIAL PROOF BAR ── */
-    .proof-bar {
-      padding: 48px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .proof-bar p {
+    /* ── SURVIVORS ── */
+    .survivors {
+      padding: 0 0 80px;
       text-align: center;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-    .proof-logos {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .proof-logos span { opacity: 0.5; }
-
-    /* ── PROBLEM SECTION ── */
-    .problem {
-      padding: 100px 0;
     }
     .section-label {
       font-family: var(--font-display);
@@ -252,74 +237,45 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      margin-bottom: 16px;
+      color: var(--accent);
+      margin-bottom: 14px;
     }
-    .problem .section-label { color: var(--danger); }
     .section-heading {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
       color: var(--text-primary);
       line-height: 1.15;
       letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .section-sub {
-      font-size: 1.05rem;
-      max-width: 580px;
-      margin-bottom: 48px;
-      line-height: 1.8;
-    }
-    .warning-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .warning-card {
-      background: var(--danger-bg);
-      border: 1px solid var(--danger-border);
-      border-radius: 14px;
-      padding: 24px 26px;
-    }
-    .warning-card .source {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--danger);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-    .warning-card .quote {
       font-size: 1rem;
-      color: var(--text-primary);
-      font-weight: 400;
-      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 36px;
     }
-
-    /* ── SOLUTION SECTION ── */
-    .solution {
-      padding: 100px 0;
-    }
-    .solution .section-label { color: var(--accent); }
-    .pillars {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 48px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      text-align: left;
     }
-    .pillar {
+    .card {
+      display: block;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 32px 28px;
-      transition: all 0.3s;
+      padding: 28px 26px;
+      text-decoration: none;
+      transition: all 0.25s;
     }
-    .pillar:hover {
+    .card:hover {
       background: var(--bg-card-hover);
-      border-color: rgba(232, 165, 23, 0.15);
-      transform: translateY(-2px);
+      border-color: rgba(232, 165, 23, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
     }
-    .pillar-icon {
+    .card .icon {
       width: 44px; height: 44px;
       background: var(--accent-glow);
       border: 1px solid rgba(232, 165, 23, 0.2);
@@ -328,139 +284,112 @@
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
-    .pillar h3 {
+    .card h3 {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-primary);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
-    .pillar p {
+    .card p {
       font-size: 0.9rem;
-      line-height: 1.7;
+      line-height: 1.65;
+      margin-bottom: 16px;
     }
-
-    /* ── PROCESS ── */
-    .process {
-      padding: 100px 0;
-      border-top: 1px solid var(--border);
-    }
-    .process .section-label { color: var(--accent); }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-      margin-top: 48px;
-    }
-    .step {
-      position: relative;
-    }
-    .step-num {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 3rem;
-      color: rgba(232, 165, 23, 0.1);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .step h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-    .step p {
-      font-size: 0.88rem;
-      line-height: 1.7;
-    }
-
-    /* ── FINAL CTA ── */
-    .final-cta {
-      padding: 100px 0 120px;
-      text-align: center;
-    }
-    .final-cta .section-heading {
-      margin-bottom: 12px;
-    }
-    .final-cta .section-sub {
-      max-width: 500px;
-      margin: 0 auto 40px;
-    }
-    .final-cta .email-form {
-      margin: 0 auto 14px;
-      justify-content: center;
-    }
-    .final-cta .deposit-link {
-      display: flex;
-      justify-content: center;
-    }
-    .final-cta .form-success {
-      margin: 0 auto;
-    }
-    .spots-counter {
+    .card .go {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--accent);
-      margin-bottom: 32px;
     }
-    .spots-counter .bar {
-      width: 120px;
-      height: 4px;
-      background: rgba(232, 165, 23, 0.15);
-      border-radius: 100px;
-      overflow: hidden;
+    .card .go svg { width: 14px; height: 14px; transition: transform 0.2s; }
+    .card:hover .go svg { transform: translateX(3px); }
+
+    /* ── PAY RESPECTS ── */
+    .respects {
+      margin-top: 44px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
-    .spots-counter .bar-fill {
-      width: 30%;
-      height: 100%;
-      background: var(--accent);
-      border-radius: 100px;
+    .respects button {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: 8px;
     }
+    .respects button:hover {
+      color: var(--accent);
+      border-color: rgba(232, 165, 23, 0.3);
+    }
+    .respects kbd {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .respects .count { color: var(--text-secondary); }
 
     /* ── FOOTER ── */
     footer {
-      padding: 32px 0;
+      padding: 28px 0;
       border-top: 1px solid var(--border);
       text-align: center;
       font-size: 0.78rem;
       color: var(--text-muted);
     }
     footer a { color: var(--text-muted); text-decoration: none; }
-    footer a:hover { color: var(--text-secondary); }
+    footer a:hover { color: var(--accent); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    @keyframes flatline {
+      0%, 40% { opacity: 1; }
+      50%, 100% { opacity: 0.25; }
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes floatUp {
+      from { opacity: 1; transform: translate(-50%, 0); }
+      to { opacity: 0; transform: translate(-50%, -80px); }
+    }
+    .f-float {
+      position: fixed;
+      left: 50%;
+      bottom: 30%;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--accent);
+      pointer-events: none;
+      animation: floatUp 1s ease-out forwards;
+      z-index: 50;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      .hero { padding: 130px 0 80px; }
-      .email-form { flex-direction: column; }
-      .email-form button { width: 100%; }
-      .proof-logos { gap: 24px; }
-      .problem, .solution, .process { padding: 72px 0; }
-      .final-cta { padding: 72px 0 96px; }
+      .hero { padding: 56px 0 36px; }
+      .coroner dl { grid-template-columns: 1fr; gap: 2px; }
+      .coroner dt { margin-top: 10px; }
+      .respects button { margin: 10px 0 0; }
     }
   </style>
 </head>
@@ -469,193 +398,105 @@
   <!-- NAV -->
   <nav>
     <div class="container">
-      <a href="#" class="logo">moltiplier<span>.ai</span></a>
-      <a href="#reserve" class="nav-cta">Reserve Your Spot</a>
+      <span class="logo">moltiplier<span>.ai</span></span>
+      <span class="status-pill"><span class="dot"></span> Status: deceased</span>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-badge"><span class="dot"></span> Now accepting early deployments</div>
-      <h1>OpenClaw for Business.<br><em>Human-Verified.</em></h1>
+      <div class="tombstone">
+        <div class="rip">RIP</div>
+        <div class="name">Moltiplier.ai</div>
+        <div class="dates">2026 – 2026</div>
+        <div class="epitaph">"Reserve your spot."<br>Nobody did.</div>
+      </div>
+      <div class="grass"></div>
+
+      <h1>It's dead, Jim.<br><em>And that's fine.</em></h1>
       <p class="subtitle">
-        The AI agent with <strong>150,000+ GitHub stars</strong> that actually does things — deployed, organized, and managed for your team. Full visibility, audit logging, and a control layer to run it right.
+        Moltiplier.ai had a nice logo, a confident landing page, and a waitlist with a <strong>$50 refundable deposit</strong>.
+        It did not have customers. Just another concept and brand we learned from. <strong>Only the best survive.</strong>
       </p>
-      <div class="cta-block">
-        <!--
-          ━━━ SETUP INSTRUCTIONS ━━━
-          1. Create a free Formspree form at https://formspree.io
-          2. Replace YOUR_FORMSPREE_ID below with your form ID
-          3. Create a Stripe Payment Link at https://dashboard.stripe.com/payment-links
-             - Set amount to $50, collect email, make it refundable
-          4. Replace YOUR_STRIPE_PAYMENT_LINK below with your Stripe URL
-        -->
-        <form class="email-form" id="waitlist-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-          <input type="email" name="email" placeholder="you@company.com" required>
-          <button type="submit">Join Waitlist</button>
-        </form>
-        <div class="form-success" id="form-success">
-          ✓ You're on the list. We'll reach out within 48 hours.
-        </div>
-        <a href="YOUR_STRIPE_PAYMENT_LINK" class="deposit-link" target="_blank">
-          Skip the line — $50 refundable deposit for priority access
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+
+      <div class="coroner">
+        <div class="label">Coroner's Report</div>
+        <dl>
+          <dt>Cause of death</dt><dd>Natural selection</dd>
+          <dt>Time of death</dt><dd>Shortly after the first customer call</dd>
+          <dt>Last words</dt><dd>"We're onboarding a limited number of businesses"</dd>
+          <dt>Survived by</dt><dd>A much better idea and the company that built it</dd>
+          <dt>Donations</dt><dd>In lieu of flowers, please click a link below</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURVIVORS -->
+  <section class="survivors">
+    <div class="container">
+      <div class="section-label">Survived By</div>
+      <h2 class="section-heading">The parts worth keeping moved here.</h2>
+      <p class="section-sub">Same team. Same ambition. Better name. Fewer skulls on the coroner's desk.</p>
+
+      <div class="cards">
+        <a class="card" href="https://getforcemultiplier.ai" target="_blank" rel="noopener">
+          <div class="icon">🚀</div>
+          <h3>getForceMultiplier.ai</h3>
+          <p>What Moltiplier was trying to be, now with a name people can actually spell. Go here if you came for the product.</p>
+          <span class="go">Visit the living
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+        <a class="card" href="https://futureobvious.com" target="_blank" rel="noopener">
+          <div class="icon">🔭</div>
+          <h3>futureobvious.com</h3>
+          <p>The company behind both of them. We launch things, learn fast, and occasionally hold a small funeral. Go here if you came for the people.</p>
+          <span class="go">Meet the next of kin
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
         </a>
       </div>
-    </div>
-  </section>
 
-  <!-- SOCIAL PROOF -->
-  <section class="proof-bar fade-in">
-    <div class="container">
-      <p>OpenClaw covered by</p>
-      <div class="proof-logos">
-        <span>Scientific American</span>
-        <span>CNBC</span>
-        <span>IBM Research</span>
-        <span>Wired</span>
-        <span>Forbes</span>
+      <div class="respects">
+        Press <kbd>F</kbd> to pay respects
+        <button id="respects-btn" type="button">F</button>
+        <span class="count" id="respects-count"></span>
       </div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="problem fade-in">
-    <div class="container">
-      <div class="section-label">The Problem</div>
-      <h2 class="section-heading">Incredible power.<br>Zero guardrails.</h2>
-      <p class="section-sub">
-        OpenClaw is the most capable AI agent ever built for personal use. But every security expert agrees: it's not ready for business without serious safeguards.
-      </p>
-      <div class="warning-cards">
-        <div class="warning-card">
-          <div class="source">Cisco Research</div>
-          <div class="quote">"Personal AI Agents like OpenClaw are a security nightmare."</div>
-        </div>
-        <div class="warning-card">
-          <div class="source">Palo Alto Networks</div>
-          <div class="quote">"A lethal trifecta of risks — private data access, untrusted content, and external communications."</div>
-        </div>
-        <div class="warning-card">
-          <div class="source">Forbes</div>
-          <div class="quote">"OpenClaw triggers security fears and scams."</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUTION -->
-  <section class="solution fade-in">
-    <div class="container">
-      <div class="section-label">The Solution</div>
-      <h2 class="section-heading">OpenClaw's power.<br>Enterprise-grade trust.</h2>
-      <p class="section-sub">
-        Moltiplier.ai deploys OpenClaw for your business with the visibility, organization, and management layer that turns a powerful open-source tool into a coordinated AI workforce.
-      </p>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-icon">👁</div>
-          <h3>Unified Visibility</h3>
-          <p>See everything your agents are doing across your org in one place. Full audit logs, activity feeds, and alerts — so you always know what's happening and can intervene when needed.</p>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">🔒</div>
-          <h3>Enterprise Security</h3>
-          <p>Sandboxed execution, encrypted credential management, full audit logging, and hardened deployment. The guardrails that OpenClaw out-of-the-box doesn't have.</p>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">⚙</div>
-          <h3>Control Layer</h3>
-          <p>Organize agents by team, role, and function. Manage permissions, set boundaries, and coordinate deployments across your org — not just one person's laptop.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="process fade-in">
-    <div class="container">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-heading">Three steps to your AI workforce.</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <h3>Tell us what to automate</h3>
-          <p>We map your workflows — lead qualification, meeting prep, email triage, data entry — and design agent configurations matched to your needs.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <h3>We deploy securely</h3>
-          <p>Your OpenClaw agents are set up with enterprise hardening, connected to your tools, and configured with human oversight checkpoints.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <h3>Monitor and improve</h3>
-          <p>Track agent activity through unified dashboards, review audit logs, and tune configurations. The system surfaces what's working and what needs attention.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta fade-in" id="reserve">
-    <div class="container">
-      <div class="spots-counter">
-        <span class="bar"><span class="bar-fill"></span></span>
-        First 50 deployment slots
-      </div>
-      <h2 class="section-heading">Get OpenClaw working<br>for your business.</h2>
-      <p class="section-sub">
-        We're onboarding a limited number of businesses for managed OpenClaw deployment. Join the waitlist or reserve a priority spot.
-      </p>
-      <form class="email-form" id="waitlist-form-2" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-        <input type="email" name="email" placeholder="you@company.com" required>
-        <button type="submit">Join Waitlist</button>
-      </form>
-      <div class="form-success" id="form-success-2">
-        ✓ You're on the list. We'll reach out within 48 hours.
-      </div>
-      <a href="YOUR_STRIPE_PAYMENT_LINK" class="deposit-link" target="_blank">
-        Skip the line — $50 refundable deposit for priority access
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>Moltiplier.ai — a <a href="#">Future Obvious</a> product &nbsp;·&nbsp; © 2026 Future Obvious LLC</p>
+      <p>Moltiplier.ai (deceased) was a <a href="https://futureobvious.com" target="_blank" rel="noopener">Future Obvious</a> product &nbsp;·&nbsp; © 2026 Future Obvious LLC &nbsp;·&nbsp; No deposits were harmed.</p>
     </div>
   </footer>
 
   <script>
-    // Scroll-triggered fade-ins
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Form submission handling (works with Formspree or can be adapted)
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        try {
-          await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
-          form.style.display = 'none';
-          form.nextElementSibling.style.display = 'block';
-        } catch (err) {
-          // Fallback: just show success anyway (replace with real error handling)
-          form.style.display = 'none';
-          form.nextElementSibling.style.display = 'block';
-        }
-      });
+    // Press F to pay respects
+    let respects = 0;
+    const countEl = document.getElementById('respects-count');
+    const lines = [
+      'Respects paid.',
+      'Respects paid again. Very thoughtful.',
+      'Okay, that is plenty of respects.',
+      'The deceased is starting to feel awkward.',
+      'Seriously, go click one of the links above.'
+    ];
+    function payRespects() {
+      respects++;
+      countEl.textContent = ' · ' + (lines[Math.min(respects, lines.length) - 1]);
+      const f = document.createElement('div');
+      f.className = 'f-float';
+      f.textContent = 'F';
+      document.body.appendChild(f);
+      setTimeout(() => f.remove(), 1000);
+    }
+    document.getElementById('respects-btn').addEventListener('click', payRespects);
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'f' || e.key === 'F') && !e.metaKey && !e.ctrlKey && !e.altKey) payRespects();
     });
   </script>
 
